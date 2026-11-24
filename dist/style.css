@@ -9,3 +9,5 @@
 @media(min-width:761px) and (max-width:1000px){.workspace{grid-template-columns:1fr}.orange-stage{height:305px}.panel-heading h2{font-size:19px}}@media(max-width:520px){.circle-grid{grid-template-columns:1fr;gap:18px}.circle-target{max-width:240px}.circle-label{margin-top:6px}.orange-stage{height:270px}}
 
 #record-dialog{width:600px;max-width:92vw}#record-dialog textarea{font-size:14px;line-height:1.7;margin-bottom:14px}.file-button{display:flex;align-items:center;justify-content:center;border-radius:11px;background:#d95b0b;color:white;text-decoration:none;font-weight:700;min-height:44px;padding:12px 18px;flex:1}@media(max-width:520px){.stage-tools{bottom:44px}.stage-label{bottom:14px}}
+
+#prediction-panel{margin-top:0;margin-bottom:22px;border-color:#efc39d;background:#fffaf5}.step.pending{color:#748092}.step.pending span{background:#e9edf2}.step.pending:hover{background:#eef2f7}

@@ -5,16 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f6f8fb">
   <title>오렌지 껍질 실험실 · 구의 겉넓이</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="math.js" defer></script>
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="style.css?v=20261124-start2">
+  <script src="math.js?v=20261124-start2" defer></script>
+  <script src="app.js?v=20261124-start2" defer></script>
 </head>
 <body>
   <header class="topbar"><a class="brand" href="./" aria-label="오렌지 껍질 실험실 처음으로"><span class="brand-mark" aria-hidden="true">◒</span> 갓세정 수학실험실</a><span class="subject">중1 수학 <span>·</span> 도형과 측정</span><button id="fullscreen" class="icon-button" aria-label="전체 화면">⛶</button></header>
   <main>
     <section class="intro"><div><span class="eyebrow">손끝으로 발견하는 수학</span><h1>오렌지 껍질로<br class="mobile-break"> 원 몇 개를 채울까요?</h1><p>직접 벗기고, 옮기고, 비교하며 구의 겉넓이를 발견해 보세요.</p></div><button id="reset" class="quiet">↻ 처음부터</button></section>
-    <nav class="steps" aria-label="탐구 순서"><button class="step active" data-step="0" aria-current="step"><span>1</span>예상하기</button><button class="step" data-step="1" disabled><span>2</span>벗기고 채우기</button><button class="step" data-step="2" disabled><span>3</span>발견하기</button><button class="step" data-step="3" disabled><span>4</span>일반화하기</button></nav>
-    <section class="question-bar"><span class="question-icon" aria-hidden="true">?</span><div><strong id="question">껍질을 모두 펼치면, 원 몇 개가 필요할까요?</strong><p id="question-sub">오렌지와 지름이 같은 원입니다. 먼저 나만의 예상을 정해 보세요.</p></div><span id="phase-tag" class="tag">나의 예상</span></section>
+    <nav class="steps" aria-label="탐구 순서"><button class="step active" data-step="0" aria-current="step"><span>1</span>예상하기</button><button class="step" data-step="1"><span>2</span>벗기고 채우기</button><button class="step" data-step="2" disabled><span>3</span>발견하기</button><button class="step" data-step="3" disabled><span>4</span>일반화하기</button></nav>
+    <section class="question-bar"><span class="question-icon" aria-hidden="true">?</span><div><strong id="question">껍질을 모두 펼치면, 원 몇 개가 필요할까요?</strong><p id="question-sub">오렌지와 지름이 같은 원입니다. 원의 개수를 정한 뒤 시작하세요. 위의 ‘벗기고 채우기’를 눌러도 시작됩니다.</p></div><span id="phase-tag" class="tag">나의 예상</span></section>
+    <section id="prediction-panel" class="activity-card"><div class="activity-copy"><span class="overline">실험 전, 잠깐!</span><h2>내 생각에서 출발해요.</h2><p>예상은 달라져도 괜찮아요. 실험하면서 확인하면 됩니다.</p></div><div class="prediction-form"><label for="prediction-reason">나는 왜 그렇게 생각했나요? <span>(선택)</span></label><input id="prediction-reason" maxlength="250" placeholder="예: 앞쪽과 뒤쪽의 껍질을 생각해 봤어요."><button id="start" class="primary">원 <span id="prediction-count">3</span>개로 예상하고 시작</button></div></section>
     <div class="workspace">
       <section class="panel orange-panel" aria-labelledby="orange-title"><div class="panel-heading"><div><span class="overline">관찰 대상</span><h2 id="orange-title">껍질을 벗겨 볼까요?</h2></div><span class="tag light" id="radius-tag">반지름 3 cm</span></div>
         <div class="orange-stage"><canvas id="orange" aria-label="회전하고 껍질을 벗길 수 있는 입체 오렌지. 아래 버튼으로도 조작할 수 있습니다."></canvas><span class="stage-label" id="stage-label">오렌지를 돌려 살펴보세요</span><div class="stage-tools"><button id="rotate-left" aria-label="오렌지 왼쪽으로 회전">↶</button><button id="rotate-right" aria-label="오렌지 오른쪽으로 회전">↷</button></div></div>
@@ -27,7 +28,6 @@
         <div id="observation" class="observation" role="status" aria-live="polite">정해진 답을 맞히기보다, 왜 그렇게 생각했는지 떠올려 보세요.</div>
       </section>
     </div>
-    <section id="prediction-panel" class="activity-card"><div class="activity-copy"><span class="overline">실험 전, 잠깐!</span><h2>내 생각에서 출발해요.</h2><p>예상은 달라져도 괜찮아요. 실험하면서 확인하면 됩니다.</p></div><div class="prediction-form"><label for="prediction-reason">나는 왜 그렇게 생각했나요? <span>(선택)</span></label><input id="prediction-reason" maxlength="250" placeholder="예: 앞쪽과 뒤쪽의 껍질을 생각해 봤어요."><button id="start" class="primary">원 <span id="prediction-count">3</span>개로 예상하고 시작</button></div></section>
     <section id="experiment-panel" class="activity-card" hidden><div class="activity-copy"><span class="overline">조작 팁</span><h2>껍질 끝을 잡아 바깥으로 당겨 보세요.</h2><p>벗긴 껍질을 원으로 옮기면 작은 조각으로 나누어 빈 곳에 놓아요. 버튼으로도 옮길 수 있어요.</p><p class="small">원 가운데의 번호를 누르면 옮길 원을 선택할 수 있어요.</p></div><button id="discover" class="primary" disabled>관찰 결과 정리하기</button></section>
     <section id="discovery-panel" class="activity-card discovery" hidden><div class="activity-copy"><span class="overline">나의 발견</span><h2>예상과 결과를 비교해 볼까요?</h2><p id="comparison"></p><p id="trial-summary"></p></div><div class="discovery-form"><label for="discovery-number">오렌지 껍질 전체는 같은 반지름인 원 <input id="discovery-number" type="number" inputmode="numeric" min="1" max="8" aria-label="발견한 원의 개수">개의 넓이와 같아요.</label><label for="explanation">무엇을 보고 그렇게 생각했나요?</label><textarea id="explanation" rows="2" maxlength="600" placeholder="남은 껍질과 원의 빈 공간을 근거로 설명해 보세요."></textarea><div class="button-row"><button id="retry-size" class="secondary">다른 크기로 재실험</button><button id="generalize" class="primary">내 발견 확인하기</button></div><p id="discovery-feedback" role="status"></p></div></section>
     <section id="general-panel" class="general-panel" hidden><span class="overline">말에서 식으로</span><h2>크기가 달라도, 넓이의 관계는 같아요.</h2><div class="formula"><span>구의 겉넓이</span><b>=</b><span>같은 반지름인 원의 넓이 × 4</span><b>=</b><strong>4πr²</strong></div><p id="numeric-example"></p><p class="model-note">이 모형은 구의 겉넓이 관계를 체험하도록 구성했습니다. 반복 실험은 관계를 추측하는 근거이며, 모든 구에 대한 엄밀한 증명을 대신하지 않습니다.</p><div class="challenge"><label for="challenge-answer">더 생각하기 · 반지름이 2배가 되면 구의 겉넓이는 몇 배가 될까요?</label><div><input id="challenge-answer" type="number" min="1" max="100" inputmode="numeric" aria-label="겉넓이가 커지는 배수"><span>배</span><button id="check-challenge" class="secondary">생각 확인</button></div><p id="challenge-feedback" role="status"></p></div><div class="button-row"><button id="new-experiment" class="secondary">다른 크기로 다시 탐구</button><button id="download" class="primary">탐구 기록 저장</button></div></section>
